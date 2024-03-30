@@ -1,0 +1,74 @@
+<!-- spam_detector/templates/spam_detector/spam_result.html -->
+{% extends 'spam_detection/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<header class="header-no-list">
+  <ul class="nav-list">
+    <li><a href="{% url 'spam_detection:dashboard' %}">Dashboard</a></li>
+    <li><a href="{% url 'spam_detection:check_spam' %}">Check Spam</a></li>
+    <li><a href="{% url 'spam_detection:blacklist' %}">Blacklist</a></li>
+    <li><a href="{% url 'spam_detection:whitelist' %}">Whitelist</a></li>
+  </ul>
+  <img src="{% static '/img/whitesolologo.png' %}" alt="">
+  <a href="{% url 'spam_detection:logout' %}" class="logout">Logout</a>
+</header>
+
+
+<div class="show-email">
+  <p>This email from <strong>{{ sender_email }}</strong> is a:</p>
+</div>
+<div class="spam-image">
+  <img src="{% static '/img/spamalert.png' %}" alt="spam image" />
+</div>
+<div class="sender-warning">
+  <p>This sender has been added to your <strong>BLACKLIST</strong>.</p>
+</div>
+<hr style="width: 90%">
+<div class="main-result-container">
+  <div class="metrics">
+    <!--<p style="text-decoration: underline; text-align: center;">Metrics</p>-->
+    <p style="margin-left: 17px; height: auto">
+      Logarithmic Probability Difference:
+    </p>
+    <p style="margin-left: 17px; height: auto"><b>{{ log_prob_diff }}</b></p>
+    <p style="margin: 50px 0 0 17px">Confidence:</p>
+    <p style="margin-left: 17px"><b>{{ confidence }}</b></p>
+  </div>
+  <div class="indicative-features">
+    <p style="text-decoration: underline; text-align: center;">Indicative Features</p>
+    <table>
+      <tr>
+        <th>Word</th>
+        <th>Count</th>
+      </tr>
+      {% for word, count in features %}
+      <tr>
+        <td>{{ word }}</td>
+        <td>{{ count }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="matching-words">
+    <p style="text-decoration: underline; text-align: center;">Matching Words</p>
+    <table>
+      <tr>
+        <th>Words</th>
+      </tr>
+      {% for words in matching_words %}
+      <tr>
+        <td>{{ words }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+    
+</div>
+
+
+  
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'spam_detection/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<header class="header-no-list">
+    <ul class="nav-list">
+      <li><a href="{% url 'spam_detection:dashboard' %}">Dashboard</a></li>
+      <li><a href="{% url 'spam_detection:check_spam' %}">Check Spam</a></li>
+      <li><a href="{% url 'spam_detection:blacklist' %}">Blacklist</a></li>
+      <li><a href="{% url 'spam_detection:whitelist' %}">Whitelist</a></li>
+    </ul>
+    <img src="{% static '/img/whitesolologo.png' %}" alt="">
+    <a href="{% url 'spam_detection:logout' %}" class="logout">Logout</a>
+  </header>
+
+  <section id="main-dashboard">
+    <h1 style="text-align: center;">Evaluation Metrics</h1>
+    <hr style="width: 95%">
+    <div id="metric-stats">
+      <div class="accuracy">
+        <h4 style="text-align: center; font-weight: 400;">Accuracy</h4>
+        <h3 style="text-align: center;">95.58%</h3>
+        <div>
+            <canvas id="accuracyChart"></canvas>
+        </div>
+        <p style="padding: 5px; text-align: justify;">The classifier correctly predicted the category (spam or ham) for 93.05% of the emails in the test set.</p>
+      </div>
+      <div class="precision">
+        <h4 style="text-align: center; font-weight: 400;">Precision</h4>
+        <h3 style="text-align: center;">89.19%</h3>
+        <div>
+            <canvas id="precisionChart"></canvas>
+        </div>
+        <p style="padding: 5px; text-align: justify;">Of the total emails that the classifier predicted as spam, 89.19% were actually spam.</p>
+      </div>
+      <div class="recall">
+        <h4 style="text-align: center; font-weight: 400;">Recall</h4>
+        <h3 style="text-align: center;">98.28%</h3>
+        <div>
+            <canvas id="recallChart"></canvas>
+        </div>
+        <p style="padding: 5px; text-align: justify;">The classifier correctly identified 98.28% of all the actual spam emails in the test set.</p>
+
+      </div>
+      <div class="fonescore">
+        <h4 style="text-align: center; font-weight: 400;">F1 Score</h4>
+        <h3 style="text-align: center;">93.52%</h3>
+        <div>
+            <canvas id="foneChart"></canvas>
+        </div>
+        <p style="padding: 5px; text-align: justify;">The F1 score provides a balanced measure of the classifier's performance, considering both precision and recall. A score of 93.52% indicates a good balance between correctly identifying spam emails and avoiding false positives.</p>
+
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var ctx1 = document.getElementById('accuracyChart').getContext('2d');
+    var ctx2 = document.getElementById('precisionChart').getContext('2d');
+    var ctx3 = document.getElementById('recallChart').getContext('2d');
+    var ctx4 = document.getElementById('foneChart').getContext('2d');
+
+    var myChart1 = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: [],
+            datasets: [{
+                data: [95.58, 4.42],
+                backgroundColor: ['#567568', '#C9B1BD']
+            }]
+        }
+    });
+
+    var myChart2 = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: [],
+            datasets: [{
+                data: [89.19, 10.81],
+                backgroundColor: ['#56445D', '#8FBC94']
+            }]
+        }
+    });
+
+    var myChart3 = new Chart(ctx3, {
+        type: 'pie',
+        data: {
+            labels: [],
+            datasets: [{
+                data: [98.28, 1.72],
+                backgroundColor: ['#222E50', '#B5CA8D']
+            }]
+        }
+    });
+
+    var myChart4 = new Chart(ctx4, {
+        type: 'pie',
+        data: {
+            labels: [],
+            datasets: [{
+                data: [93.52, 6.48],
+                backgroundColor: ['#392F5A', '#A8C7BB']
+            }]
+        }
+    });
+</script>
+
+
+
+{% endblock %}

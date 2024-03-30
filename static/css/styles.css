@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body{
+    font-family: "Montserrat", sans-serif;
+    background-color: #E1E5F2;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#logo-single {
+    display: flex; justify-content: center;
+    height: 20vh;
+}
+
+main .login_form, main .register-form, main .spam-form{
+    height: 70vh;
+    display: flex; justify-content: center; align-items: center;
+}
+
+
+.login_form .form-flex, .register-form .form-flex, main .spam-form .form-flex{
+    border: 1px solid red;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.login_form .form-flex button, .register-form .form-flex button, main .spam-form .form-flex button{
+    padding: 10px;
+    background-color: #022B3A;
+    color: #E1E5F2;
+    margin-bottom: 5px;
+    width: 50%;
+    text-align: center;
+    border-radius: 5px;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.register-form .form-flex button{
+    width: 70%;
+}
+
+.login_form .form-flex button:hover, .register-form .form-flex button:hover, main .spam-form .form-flex button:hover{
+    cursor: pointer;
+}
+
+.login_form .form-flex .reminder, .register-form .form-flex .reminder, .spam-form .form-flex .reminder{
+    font-size: 10px;
+    text-align: center;
+}
+
+.login_form .form-flex .button-container, .register-form .form-flex .button-container, .spam-form .form-flex .button-container{
+    text-align: center;
+}
+
+#div_id_username, #div_id_password, #div_id_password1, #div_id_password2, #div_id_sender_email, #div_id_email_text{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#div_id_username label, #div_id_password label, #div_id_password1 label, #div_id_password2 label, #div_id_sender_email label, #div_id_email_text label{
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+#div_id_username input, #div_id_password input, #div_id_password1 input, #div_id_password2 input, #div_id_sender_email input, #div_id_email_text textarea{
+    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+    background: none;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+}
+
+#id_username_helptext, #id_password1_helptext, #id_password2_helptext {
+    display: none;
+}
+
+
+.header-no-list{
+    background: #1F7A8C;
+    display: flex; justify-content: center;
+    height: 10vh;
+    padding: 10px;
+    position: relative;
+}
+
+.header-no-list .logout{
+    text-decoration: none;
+    position: absolute;
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.header-no-list .logout:hover{
+    background-color: red;
+}
+
+.header-no-list .nav-list{
+    position: absolute;
+    bottom: 20px;
+    left: 75px;
+}
+
+.header-no-list .nav-list li{
+    display: inline-block;
+}
+
+.header-no-list .nav-list li a{
+    text-decoration: none;
+    color: #E1E5F2;
+    margin-right: 60px;
+    padding: 5px;
+    transition: 0.3s all;
+}
+
+.header-no-list .nav-list li a:hover{
+    border-bottom: 1.5px solid #E1E5F2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#main-dashboard{
+    padding: 30px;
+}
+
+#user-stats{
+    margin-top: 80px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#user-stats .stats, #user-stats .pie-chart, #user-stats .navbar{
+    width: 30%;
+}  
+
+#user-stats .stats {
+    text-align: justify;
+}
+
+
+#myPieChart {
+    height: 100%;
+    width: 100%;
+}
+
+#user-stats .navbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+
+#user-stats .navbar a{
+    background-color: #022B3A;
+    color: #E1E5F2;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 130px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+
+.table-container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+main .list-table{
+    border-spacing: 0;
+    border: 1px solid #022B3A;
+    width: 30%;
+}
+
+main .list-table td, main .list-table th{
+    padding: 8px;
+    text-align: center;
+    border-left: 1px solid #022B3A;
+}
+
+main .list-table th{
+    background-color: #2f98aa;
+    color: #E1E5F2;
+    border-bottom: 1px solid #022B3A;
+}
+
+
+main .show-email{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: auto;
+}
+
+main .spam-image {
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    margin-top: 10px;
+
+}
+
+main .sender-warning {
+    display: flex;
+    justify-content: center;
+
+}
+
+main .main-result-container .indicative-features table, main .main-result-container .matching-words table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+main .main-result-container .indicative-features th, td{
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+}
+
+main .main-result-container .matching-words th, td{
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+}
+
+th{
+    background-color: #2f98aa;
+    color: #E1E5F2;
+}
+
+
+/* THIS IS WHERE SPAM RESULT BEGINS */
+
+main .main-result-container{
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+main .main-result-container .metrics, main .main-result-container .indicative-features, main .main-result-container .matching-words{
+    /*border: 1px solid black;*/
+    width: 30%;
+}
+
+
+
+main .main-result-container .metrics{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 200px;
+    background-color: #BFDBF7;
+    margin-top: 50px;
+    width: 25%;
+}
+
+main .main-result-container .matching-words{
+    width: 25%;    
+    height: 300px;
+}
+
+main .main-result-container .matching-words table{
+    height: 250px;
+    overflow-y: scroll;
+}
+
+main .main-result-container .matching-words table::-webkit-scrollbar {
+    display: none;
+}
+
+main .main-result-container .indicative-features{
+    width: 40%;
+}
+
+
+#metric-stats{
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#metric-stats .accuracy, #metric-stats .precision, #metric-stats .recall, #metric-stats .fonescore{
+    width: 20%;
+}
+
+#metric-stats #accuracyChart, #metric-stats #precisionChart, #metric-stats #recallChart, #metric-stats #foneChart{
+    height: 150px;
+}

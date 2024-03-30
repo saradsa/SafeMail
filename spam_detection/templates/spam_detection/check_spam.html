@@ -1,0 +1,35 @@
+<!-- spam_detector/templates/spam_detector/check_spam.html -->
+{% extends 'spam_detection/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+  <header class="header-no-list">
+    <ul class="nav-list">
+      <li><a href="{% url 'spam_detection:dashboard' %}">Dashboard</a></li>
+      <li><a href="{% url 'spam_detection:whitelist' %}">Whitelist</a></li>
+      <li><a href="{% url 'spam_detection:blacklist' %}">Blacklist</a></li>
+    </ul>
+    <img src="{% static '/img/whitesolologo.png' %}" alt="">
+    <a href="{% url 'spam_detection:logout' %}" class="logout">Logout</a>
+  </header>
+
+
+  <div class="spam-form">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-flex">
+        {{ form|crispy }}
+        <div class="button-container">
+          <button type="submit">Check</button>
+        </div>
+        <p class="reminder" style="padding: 3px; background-color: red; color: white; border-radius: 5px;">{{ warning }}</p>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+
+
+
+

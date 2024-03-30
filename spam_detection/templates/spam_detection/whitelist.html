@@ -1,0 +1,36 @@
+<!-- spam_detector/templates/spam_detector/spam_result.html -->
+{% extends 'spam_detection/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<header class="header-no-list">
+  <ul class="nav-list">
+    <li><a href="{% url 'spam_detection:dashboard' %}">Dashboard</a></li>
+    <li><a href="{% url 'spam_detection:check_spam' %}">Check Spam</a></li>
+    <li><a href="{% url 'spam_detection:blacklist' %}">Blacklist</a></li>
+  </ul>
+  <img src="{% static '/img/whitesolologo.png' %}" alt="">
+  <a href="{% url 'spam_detection:logout' %}" class="logout">Logout</a>
+</header>
+
+
+  <h2 style="text-align: center; margin-top: 50px;">{{ username }}'s Whitelist</h2>
+  <div class="table-container">
+    <table class="list-table">
+      <tr>
+        <th>S.No.</th>
+        <th>Email Sender Address</th>
+      </tr>
+      {% for users in whitelist %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ users.email }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  
+  
+{% endblock %}

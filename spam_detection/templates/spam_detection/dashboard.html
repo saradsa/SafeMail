@@ -1,0 +1,72 @@
+{% extends 'spam_detection/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <header class="header-no-list">
+    <img src="{% static '/img/whitesolologo.png' %}" alt="">
+    <a href="{% url 'spam_detection:logout' %}" class="logout">Logout</a>
+  </header>
+
+
+  <section id="main-dashboard">
+    <h1>Hi, {{ username }}</h1>
+    <div id="user-stats">
+      <div class="stats">
+        <h3>Keeping Your Inbox Safe</h3>
+        <p>How the system works?</p>
+        <ul>
+          <li><strong>Data Preprocessing</strong><br>Emails are cleaned by removing symbols and stopwords.</li>
+          <li><strong>Training Phase</strong><br>System is trained on a dataset of pre-labeled emails.</li>
+          <li><strong>Classification</strong><br>The sytem analyzes words in the email and calculates probability of it belonging to the spam or non-spam category.</li>
+          <li><strong>Spam Prediction</strong><br>Based on probabilites, the system predicts if the email is spam or not, along with the confidence score (high, medium, low)</li>
+        </ul>
+        <!--<p>Spam emails: {{ spam_count }}</p>
+        <p>Not spam emails: {{ not_spam_count }}</p>
+        <p>Total mails checked: {{ total_mail }}</p>-->
+      </div>
+      <div class="pie-chart">
+        <div>
+          <canvas id="myPieChart"></canvas>
+        </div>
+      </div>
+      <div class="navbar">
+        <!--<ul>
+          <li><a href="{% url 'spam_detection:check_spam' %}">Check Spam</a></li>
+          <li><a href="{% url 'spam_detection:blacklist' %}">Blacklist</a></li>
+          <li><a href="{% url 'spam_detection:whitelist' %}">Whitelist</a></li>
+        </ul>-->
+        <a href="{% url 'spam_detection:check_spam' %}">Check Spam</a>
+        <a href="{% url 'spam_detection:blacklist' %}">Blacklist</a>
+        <a href="{% url 'spam_detection:whitelist' %}">Whitelist</a>
+        <a href="{% url 'spam_detection:metrics' %}">Evaluation Metrics</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="spam-count" style="display: none;">{{ spam_count }}</div>
+  <div id="not-spam-count" style="display: none;">{{ not_spam_count }}</div>
+
+{% endblock %}
+
+{% load static %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var spamCount = document.getElementById('spam-count').innerHTML;
+    var notSpamCount = document.getElementById('not-spam-count').innerHTML;
+    console.log(spamCount, notSpamCount)
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Spam Emails', 'Ham Emails'],
+            datasets: [{
+                data: [spamCount, notSpamCount],
+                backgroundColor: ['#877878', '#788778'],
+            }]
+        }
+    });
+</script>
+{% endblock %}

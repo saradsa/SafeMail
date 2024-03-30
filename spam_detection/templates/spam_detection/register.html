@@ -1,0 +1,27 @@
+<!-- spam_detector/templates/spam_detector/register.html -->
+{% extends 'spam_detection/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<div id="logo-single">
+  <img src="{% static '/img/logofull.png' %}" alt="">
+</div>
+
+
+<div class="register-form">
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-flex">
+      {{ form|crispy }}
+      <div class="button-containter">
+        <button type="submit">Register</button>
+      </div>
+      <p class="reminder">Already registered? <a href="{% url 'spam_detection:login' %}">Login</a></p>
+    </div>
+  </form>
+</div>
+
+  
+{% endblock %}
